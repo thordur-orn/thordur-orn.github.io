@@ -38,7 +38,7 @@
 
 					var $this = $(this),
 						$img = $this.children('img');
-
+					
 					// Apply img as background.
 						$this
 							.css('background-image', 'url("' + $img.attr('src') + '")')
