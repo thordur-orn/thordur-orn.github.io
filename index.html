@@ -94,9 +94,24 @@
 									<h3>Data analysis</h3>
 									<article>
 										<h4>Temporal Traffic Patterns and Weather Affects</h4>
+										<p>
+											Let's start our analysis by inspecting the temporal patterns in the data. We are interested in seeing how the traffic changes during the day, during the week and during the whole year. The interactive chart below shows these patterns. Navigate through the charts by using the tabs above the chart. 
+										</p>
 										<div class="iframewrapper ">
 											<iframe width="850" height="550px" src="temp_patt.html" frameborder="0" allowfullscreen></iframe>
 										</div>
+										<p>
+											The first graph shows the average number of cars and bikes that were counted during each hour of the day. The number of cars is considerably higher than the number of bikes, and the number of cars and bikes is expectedly much less in the nighttime than in the daytime. We see notable peaks in the bike numbers between 8 and 9 AM, and between 4 and 5 PM, while the car traffic is pretty much rising the whole day until it reaches its peak between 3 and 4 PM. 
+										</p>
+										<p>
+											In the weekly data, the distributions of car and bike traffic are very similar, with pretty uniform numbers in the weekdays, and significantly lower during the weekends.
+										</p>
+										<p>
+											The monthly pattern doesn't really offer any interesting insights, there is less traffic in July compared to the surrounding months. December is also less busy on the road.
+										</p>
+										<p>
+											Now we are interested in seeing the count of cars and bikes under certain weather conditions. Let us look at the numbers in hot weather, high windspeed and wet weather. We define hot weather as temperature over 16°C, high windspeed as windspeed over 40m/s, and wet weather as days with some rain. The interactive chart below shows a visualisation of those numbers. Note the difference in the y-axes.
+										</p>
 										<div class="iframewrapper ">
 											<iframe width="850" height="550px" src="weather_bokeh.html" frameborder="0" allowfullscreen></iframe>
 										</div>
