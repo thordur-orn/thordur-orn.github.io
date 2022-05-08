@@ -124,7 +124,7 @@
 									<article>
 										<div>
 											<h4>Predicting bike traffic and important features.</h4>
-											<p>Lastly we are interested in see if we can train a machine learning model that predicts the bike traffic for each station. First we chose the features we want as an input to our model, we want to make prediction based on location, month, day of the week and weather. The weather features we choose to use are temperature, what temperature it feels like, perception, wind speed and wind direction. To be able to make a good model we need to encode non-numerical features. That is day of week and the location of the station. For the weekdays Monday is represented as 0 and Sunday as 6. In table below be can see how the stations are encoded. </p>
+											<p>Lastly we are interested in see if we can train a machine learning model that predicts the bike traffic for each station. First we choose the features we want as an input to our model, we want to make prediction based on location, month, day of the week and weather. The weather features we choose to use are temperature, what temperature it feels like, perception, wind speed and wind direction. To be able to make a good model we need to encode non-numerical features. That is day of week and the location of the station. For the weekdays Monday is represented as 0 and Sunday as 6. In table below be can see how the stations are encoded. </p>
 										</div>
 										<h4>Encoding of the location</h4>
 										<div class="table-wrapper">
@@ -141,33 +141,58 @@
 														<td>0</td>
 													</tr>
 													<tr>
-														<td>Frederikssundsvej</td>
+														<td>Fredensbro</td>
 														<td>1</td>
 													</tr>
 													<tr>
-														<td>Hareskovvej</td>
+														<td>Frederikssundsvej</td>
 														<td>2</td>
 													</tr>
 													<tr>
-														<td>Torvegade</td>
+														<td>Hareskovvej</td>
 														<td>3</td>
 													</tr>
 													<tr>
-														<td>Vigerslev Allé</td>
+														<td>Kalvebod Brygge</td>
 														<td>4</td>
 													</tr>
 													<tr>
-														<td>Åboulevard</td>
+														<td>Roskildevej</td>
 														<td>5</td>
+													</tr>
+													<tr>
+														<td>Torvegade</td>
+														<td>6</td>
+													</tr>
+													<tr>
+														<td>Vigerslev Allé</td>
+														<td>7</td>
+													</tr>
+													<tr>
+														<td>Åboulevard</td>
+														<td>8</td>
 													</tr>
 												</tbody>
 											</table>
 										</div>
 										<div>
-											<p>Next step is to find a model that fits out data and we see that it is a model based on decision trees. After we train the model we investigate it more to get the sense how it predicts a new datapoint and also to learn what seems to be the most important feature when predicting bike traffic. First we give the model a new datapoint, in the figure below we can see how one of the decision trees predicts the new data point. 
+											<p>Next step is to find a model that fits out data and we see that it is a model based on decision trees. We can use a model like this to make predictions on bike traffic and also to give us more insights into what features are important when predicting bike traffic. In the figures below we can see the importance of features in our machine learning model. In the figure to the left we can see that the location or the name of the street the bikes are passing by is the far most important feature. In the figure to the right we can see the importance of other features. The second most important feature is the day of week. When looking at the weather feature feelslike is most important, from that we can interpret that depending on the tempature people feel has also some impact on if they decide to bike or not. 
+											</p>
+											<a href="#"><img src="images/feature_imp.png" alt=""></a>	
+										</div>	
+										<div>
+											<p>We are interested in looking even further into feature importance and we decide to use shapley values. They are a widely used approach from cooperative game theory that come with desirable properties and are useful when looking deeper into the feature importance of a model.  The shaply values give a very similar result to the feature importance values and in the figure below we can see the mean absolute shaply values of each feature. </p>
+											<a href="#"><img src="images/shaply_val.png" alt=""></a>	
+										</div>
+										<div>
+											<p>Here below we have a different representation for the shaply values. This figure is more informative. We have different shaply values for different values of each feature. For example we can see that for higher percip we have lower shap value which means that high percip lowers the number of bikes passing by. Also for the feels like feature we can see that for higher values we have more traffic. </p>
+											<a href="#"><img src="images/summary_val.png" alt=""></a>	
+										</div>
+										<div>
+											<p>Lastly we want to visualize how a new datapoint is predicted.Since our model is a random forest regressor and based on decision trees. First we get a random sample for our data, below is the visualization of the branch that the datapoint goes through when predicting its output. The data point we want to predict is at Frederikssundsvej on a tuesday in August. Where the tempature feels like 17.5°C and perciption is 1.2. This decision tree predicts from thease features that the number of bikes that will pass by at this location on a day like this is 3052.
 											</p>
 											<a href="#"><img src="images/grein.svg" alt=""></a>	
-										</div>									
+										</div>								
 									</article>
 									</div>
 								</div>
