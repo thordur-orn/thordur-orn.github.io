@@ -74,17 +74,39 @@
 								<div class="container">
 									<h3>The Data</h3>
 										<p>
-											The traffic data is gathered from <a href="https://www.opendata.dk/city-of-copenhagen/trafiktal" target="blank">Københavns Kommune</a>.
+											The traffic data is gathered from <a href="https://www.opendata.dk/city-of-copenhagen/faste-cykeltaellinger?fbclid=IwAR2s1HKWtWFHXUEuayvwQKqnvHqykKManJZn1ALWgLXtMGKfuNpqR8N2yBE" target="blank">Københavns Kommune</a>.
 											<br><br>
-											The traffic numbers are collected from counting posts located on various streets and bicycle routes around the city of Copenhagen. There are data from nine counters on bicycle routes, and from 14 posts on streets counting cars. The data is from the year 2014 and is ordered by date and hour. The interactive map below shows the locations of the counting posts.
-											<br><br>
-											We collected the weather data from the <a href="https://www.visualcrossing.com/weather/weather-data-services" target="blank">Visual Crossing Weather API</a>. It contains information about the weather for each day in 2014. The weather data consists of information about precipitation, temperature, windspeed and wind direction, UV index and humidity among other things. 
-											<br><br>
-											Our plan is to concatenate these two datasets and analyse them to get a deeper understanding of the traffic in Copenhagen, and try to predict the traffic based on the various factors in our data. 
-										</p>
-										<div class="iframewrapper ">
+											The traffic numbers are collected from counting posts located on various streets and bicycle routes around the city of Copenhagen. There are data from nine counters on bicycle routes, and from 14 posts on streets counting cars. The data is from the years 2012, 2013 and 2014 and is ordered by date and hour. The interactive map below shows the locations of the counting posts.
+											</p>
+											<div class="iframewrapper ">
 											<iframe width="800" height="450" src="map.html" frameborder="0" allowfullscreen></iframe>
-										</div>
+											</div>
+											<br><br>
+											We start by investigating the data to get better overview of it. In the boxplot below we have the overview of the bicycle data. It shows the distribution of the number of bicycles per day each year. We can see that 2013 has the most significant outlier indicating the busiest day for the entire data. We can also see that 2012 has the highest mean and 2013 has the lowest.
+								            <br><br>
+											<div id="slope" class="image">
+												<img src="images/box_bike.png" alt="Box bike" width="100%">
+											</div>
+											<br><br>
+											<p>Now we do the same for the car data, the boxplot below shows the distribution of the number of cars per day each year.  Overall we can conclude that the car data is evenly distributed over the three years of measurements, the statistical difference is insignificant in between years.</p>
+											<div id="slope" class="image">
+												<img src="images/box_car.png" alt="Box car" width="100%">
+											</div>
+											<br><br>
+											We collected the weather data from the <a href="https://www.visualcrossing.com/weather/weather-data-services" target="blank">Visual Crossing Weather API</a>. It contains information about the weather for each day over the three years. The weather data consists of information about precipitation, temperature, windspeed and wind direction, UV index and humidity among other things. 
+											<br><br>
+											To get a better overview of the weather data we create a heat map for perception, tempature and wind on 2014. Here below we can see the heat maps and how the weather was in the year of 2014. 
+											<div id="slope" class="image">
+												<img src="images/precip2014.png" alt="Percip" width="100%">
+											</div>
+											<div id="slope" class="image">
+												<img src="images/temp2014.png" alt="Temp" width="100%">
+											</div>
+											<div id="slope" class="image">
+												<img src="images/wind2014.png" alt="Wind" width="100%">
+											</div>
+
+											Our plan is to concatenate these two datasets and analyse them to get a deeper understanding of the traffic in Copenhagen, and try to predict the traffic based on the various factors in our data. 
 								</div>
 							</section>
 
@@ -193,20 +215,31 @@
 										<div>
 											<p>Next step is to find a model that fits out data and we see that it is a model based on decision trees. We can use a model like this to make predictions on bike traffic and also to give us more insights into what features are important when predicting bike traffic. In the figures below we can see the importance of features in our machine learning model. In the figure to the left we can see that the location or the name of the street the bikes are passing by is the far most important feature. In the figure to the right we can see the importance of other features. The second most important feature is the day of week. When looking at the weather feature feelslike is most important, from that we can interpret that depending on the tempature people feel has also some impact on if they decide to bike or not. 
 											</p>
-											<a href="#"><img src="images/feature_imp.png" alt=""></a>	
+											<div id="imp" class="image">
+												<center>
+												<img src="images/feature_imp.png" alt="Feature importance" width="100%">
+											</center>
+											</div>
 										</div>	
 										<div>
 											<p>We are interested in looking even further into feature importance and we decide to use shapley values. They are a widely used approach from cooperative game theory that come with desirable properties and are useful when looking deeper into the feature importance of a model.  The shaply values give a very similar result to the feature importance values and in the figure below we can see the mean absolute shaply values of each feature. </p>
+											<center>
 											<a href="#"><img src="images/shaply_val.png" alt=""></a>	
+										</center>
 										</div>
 										<div>
-											<p>Here below we have a different representation for the shaply values. This figure is more informative. We have different shaply values for different values of each feature. For example we can see that for higher percip we have lower shap value which means that high percip lowers the number of bikes passing by. Also for the feels like feature we can see that for higher values we have more traffic. </p>
-											<a href="#"><img src="images/summary_val.png" alt=""></a>	
+											<p>Here below we have a different representation for the shaply values <a href="https://shap.readthedocs.io/en/latest/example_notebooks/overviews/An%20introduction%20to%20explainable%20AI%20with%20Shapley%20values.html#additive_regression" target="blank"></a>. This figure is more informative. We have different shaply values for different values of each feature. For example we can see that for higher percip we have lower shap value which means that high percip lowers the number of bikes passing by. Also for the feels like feature we can see that for higher values we have more traffic. </p>
+											<center>
+											<a href="#"><img src="images/summary_val.png" alt=""></a>
+										</center>	
 										</div>
+	
 										<div>
 											<p>Lastly we want to visualize how a new datapoint is predicted.Since our model is a random forest regressor and based on decision trees. First we get a random sample for our data, below is the visualization of the branch that the datapoint goes through when predicting its output. The data point we want to predict is at Frederikssundsvej on a tuesday in August. Where the tempature feels like 17.5°C and perciption is 1.2. This decision tree predicts from thease features that the number of bikes that will pass by at this location on a day like this is 3052.
 											</p>
+											<center>
 											<a href="#"><img src="images/grein.svg" alt=""></a>	
+											</center>
 										</div>								
 									</article>
 									</div>
