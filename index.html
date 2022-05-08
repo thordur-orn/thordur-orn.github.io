@@ -122,50 +122,53 @@
 										<p>
 											The question is then: Can we conclude, using this data, that these results are reliable? Is the difference in traffic between weather conditions maybe due to other factors? Applying a t-test on the data, we can determine if the difference is in fact significant, and not due to a chance or other reasons. This gives us the results that there is actually not a statistically significant difference between the number of cars in high and low windspeed and temperature, while there is significant difference between the car traffic in low precipitation and high precipitation. On the contrary, for the bicycle traffic, there is in fact a significant difference between the traffic numbers in high and low precipitation, windspeed and temperature. The people of Copenhagen are understandably more excited to ride their bikes to work or school if the weather is nice. The number of cars also goes down when it's raining, so it looks like people are just less likely to go out when it's raining. If seems strange though that the inhabitants of Copenhagen are not fond of rain - according to our data, there is some rain on two thirds of the days there.
 										</p>
-									    </article>
-										<article>
-											<div>
-												<h4>Predicting bike traffic and important features.</h4>
-												<p>Lastly we are interested in see if we can train a machine learning model that predicts the bike traffic for each station. First we chose the features we want as an input to our model, we want to make prediction based on location, month, day of the week and weather. The weather features we choose to use are temperature, what temperature it feels like, perception, wind speed and wind direction. To be able to make a good model we need to encode non-numerical features. That is day of week and the location of the station. For the weekdays Monday is represented as 0 and Sunday as 6. In table below be can see how the stations are encoded. </p>
-											</div>
-											<h4>Encoding of the location</h4>
-											<div class="table-wrapper">
-												<table>
-													<thead>
-														<tr>
-															<th>Street name</th>
-															<th>Encoding</th>
-														</tr>
-													</thead>
-													<tbody>
-														<tr>
-															<td>Ellebjergvej</td>
-															<td>0</td>
-														</tr>
-														<tr>
-															<td>Frederikssundsvej</td>
-															<td>1</td>
-														</tr>
-														<tr>
-															<td>Hareskovvej</td>
-															<td>2</td>
-														</tr>
-														<tr>
-															<td>Torvegade</td>
-															<td>3</td>
-														</tr>
-														<tr>
-															<td>Vigerslev Allé</td>
-															<td>4</td>
-														</tr>
-														<tr>
-															<td>Åboulevard</td>
-															<td>5</td>
-														</tr>
-													</tbody>
-												</table>
-											</div>
-											<div></div>
+										<p>
+											Now that we have shown the difference due to weather conditions, we are interested in building a model to predict the traffic flow of both cars and bikes, using methods of machine learning.
+										</p>
+									</article>
+									<article>
+										<div>
+											<h4>Predicting bike traffic and important features.</h4>
+											<p>Lastly we are interested in see if we can train a machine learning model that predicts the bike traffic for each station. First we chose the features we want as an input to our model, we want to make prediction based on location, month, day of the week and weather. The weather features we choose to use are temperature, what temperature it feels like, perception, wind speed and wind direction. To be able to make a good model we need to encode non-numerical features. That is day of week and the location of the station. For the weekdays Monday is represented as 0 and Sunday as 6. In table below be can see how the stations are encoded. </p>
+										</div>
+										<h4>Encoding of the location</h4>
+										<div class="table-wrapper">
+											<table>
+												<thead>
+													<tr>
+														<th>Street name</th>
+														<th>Encoding</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>Ellebjergvej</td>
+														<td>0</td>
+													</tr>
+													<tr>
+														<td>Frederikssundsvej</td>
+														<td>1</td>
+													</tr>
+													<tr>
+														<td>Hareskovvej</td>
+														<td>2</td>
+													</tr>
+													<tr>
+														<td>Torvegade</td>
+														<td>3</td>
+													</tr>
+													<tr>
+														<td>Vigerslev Allé</td>
+														<td>4</td>
+													</tr>
+													<tr>
+														<td>Åboulevard</td>
+														<td>5</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+										<div>
 											<p>Next step is to find a model that fits out data and we see that it is a model based on decision trees. After we train the model we investigate it more to get the sense how it predicts a new datapoint and also to learn what seems to be the most important feature when predicting bike traffic. First we give the model a new datapoint, in the figure below we can see how one of the decision trees predicts the new data point. 
 											</p>
 											<a href="#"><img src="images/grein.svg" alt=""></a>	
