@@ -29,6 +29,75 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;}
 
+.nbButton{
+	-webkit-appearance: button;
+    -moz-appearance: button;
+	display: flex;
+	flex-direction: row;
+    appearance: button;
+	height: 50px;
+	width: 180px;
+	background-color: #a8c7de;
+	color: white;
+	border-radius: 5px;
+	border: None;
+}
+
+.gitButton{
+	-webkit-appearance: button;
+    -moz-appearance: button;
+	display: flex;
+	flex-direction: row;
+    appearance: button;
+	height: 50px;
+	width: 180px;
+	background-color: #333;
+	color: white;
+	border-radius: 5px;
+	border: None;
+	margin-left: 10px;
+}
+
+.gitButton:hover{
+	background-color: black;
+	cursor: pointer;
+}
+
+.gitButton:active{
+	background-color: #6e5494;
+}
+
+.nbButton:hover{
+	background-color: #6ca2cf;
+	cursor: pointer;
+}
+
+.nbButton:active{
+	background-color: #4380b1;
+}
+
+.gitButtonImage{
+	height: 100%;
+	margin-top: 9px;
+	margin-left: 5px;
+}
+
+.nbButtonImage{
+	height: 100%;
+	margin-top: 12px;
+	margin-left: 8px;
+}
+
+.buttonText{
+	margin-top: 16px;
+	margin-left: 15px;
+}
+
+#linkButtons{
+	display: flex;
+	flex-direction: row;
+}
+
 .image_ {
 	padding-left: 20%;
 }
