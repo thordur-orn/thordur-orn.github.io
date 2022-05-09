@@ -26,7 +26,8 @@
 						<li><a href="#data">The Data</a></li>
 						<li><a href="#dataAnalysis">Data Analysis</a></li>
 						<li><a href="#conclusion">Conclusion</a></li>
-						<li><a href="#code">Code</a></li>
+						<li><a href="#links">Links</a></li>
+						<li><a href="#ref">References</a></li>
 					</ul>
 				</nav>
 				<!--
@@ -98,7 +99,7 @@
 											<br><br>
 											We collected the weather data from the <a href="https://www.visualcrossing.com/weather/weather-data-services" target="blank">Visual Crossing Weather API</a>. It contains information about the weather for each day over the three years. The weather data consists of information about precipitation, temperature, windspeed and wind direction, UV index and humidity among other things. 
 											<br><br>
-											To get a better overview of the data we create a heat map for precipitation, tempature and windspeed in 2014. Here below we can see the heat maps and how the weather was that year. 
+											To get a better overview of the data we create a heat map for precipitation, tempature and windspeed in 2014. Here below we can see the heat maps and how the weather was that year. Dark coloring of the cells indicate a high value and light coloring indicates lower value. 
 											<div id="slope" class="image">
 												<img src="images/precip2014.png" alt="Percip" width="100%">
 											</div>
@@ -217,7 +218,7 @@
 										</div>
 										<div>
 											<p>
-												The next step is to find a model that fits our data and we see that it is a model based on decision trees. We can use a model like this to make predictions on bike traffic and also to give us more insights into what features are important when predicting bike traffic. In the figures below we can see the importance of features in our machine learning model. In the figure to the left we can see that the location or the name of the street the bikes are passing by is the far most important feature. In the figure to the right we can see the importance of other features. The second most important feature is the day of week. When looking at the weather features, <it>feelslike</it> is most important, from that we can interpret that depending on the tempature people feel has also some impact on if they decide to bike or not. 
+												The next step is to find a model that fits our data and we see that it is a model based on decision trees. We can use a model like this to make predictions on bike traffic and also to give us more insights into what features are important when predicting bike traffic. In the figures below we can see the importance of features in our machine learning model. In the figure to the left, we can see that the location or the name of the street the bikes are passing by is the far most important feature. In the figure to the right, we can see the importance of other features. The second most important feature is the day of the week. When looking at the weather features, feelslike is most important, from that we can interpret that depending on the temperature people feel has also some impact on if they decide to bike or not.
 											</p>
 											<div id="imp" class="image_">
 												<img src="images/feature_imp.png" alt="Feature importance" width="100%">
@@ -225,10 +226,10 @@
 										</div>	
 										<div>
 											<p>
-												We are interested in looking even further into feature importance and we decide to use Shapley values. They are a widely used approach from cooperative game theory that come with desirable properties and are useful when looking deeper into the feature importance of a model.  The Shapley values give a very similar result to the feature importance values and in the figure below we can see the mean absolute Shapley values of each feature.
+												We are interested in looking even further into feature importance and we want to know how different values for different features effect the bike traffic. To do that we decide to use Shapley values <a href="https://shap.readthedocs.io/en/latest/example_notebooks/overviews/An%20introduction%20to%20explainable%20AI%20with%20Shapley%20values.html" target="blank">[4]</a>. They are a widely used approach from cooperative game theory that come with desirable properties and are useful when looking deeper into the feature importance of a model.  The Shapley values give a very similar result to the feature importance values and in the figure below we can see the mean absolute Shapley values of each feature. The result here is also that the feelslike is the weather feature that has the most impact on the bike traffic.
 											</p>
 											<div class="image_">
-												<img src="images/shaply_val.png" alt="">
+												<img src="images/shaply_val.png" alt="Shaply values">
 											</div>
 										</div>
 										<div>
@@ -236,18 +237,19 @@
 												Here below we have a different representation of the Shapley values. This figure is more informative. We have different Shapley values for different values of each feature. For example, we can see that for higher precipitation we have a lower Shapley value which means that high precipitation lowers the number of bikes passing by. Also for the feels like feature, we can see that for higher values we have more traffic.
 											</p>
 											<div class="image_">
-												<img src="images/summary_val.png" alt="">
+												<img src="images/summary_val.png" alt="summary shaply" width="90%">
 											</div>
 										</div>
 	
 										<div>
 											<p>
-												Lastly, we want to visualize how a new datapoint is predicted. Since our model is based on decision trees we want vizulize a part of the tree . First, we get a random sample for our data, below is the visualization of the branch that the datapoint goes through when predicting its output. The data point we have and want to predict is at Frederikssundsvej on a Tuesday in August. Where the temperature feels like 17.5°C and precipitation is 1.2. The decision tree predicts from these features that the number of bikes that will pass by this location on a day like this is 3052.
+												Lastly, we want to visualize how a new datapoint is predicted. Since our model is based on decision trees <a href="https://scikit-learn.org/stable/modules/tree.html" target="blank">[5]</a> we want vizulize a part of the tree . First, we get a random sample for our data, below is the visualization of the branch that the datapoint goes through when predicting its output. The data point we have and want to predict is at Frederikssundsvej on a Tuesday in August. Where the temperature feels like 17.5°C and precipitation is 1.2. The decision tree predicts from these features that the number of bikes that will pass by this location on a day like this is 3052.
 											</p>
 											<div class="image_">
-												<img src="images/grein.svg" alt="">
+												<img src="images/grein.svg" alt="grein">
 											</div>
-										</div>								
+										</div>
+										<p>To sum it up this machine learning model can be used to predict how many bikes will pass by a location a day in specific weather conditions. It also helps us to get more knowledge of what weather features have an impact on the bike traffic. The result from this goes hand in hand with the results we got from the visualization and hypothesis tests. The weather does have some effect on if people decide to bike or not, for example, all of the results indicate that there is more traffic when the temperature is higher.</p>								
 									</article>
 									</div>
 								</div>
@@ -263,13 +265,21 @@
 								</div>
 							</section>
 						<!-- Five -->
-						<section id="code">
+						<section id="links">
 							<div class="container">
-								<h3>Code</h3>
+								<h3>Links</h3>
 								<p> </p>
 							</div>
 						</section>
 					</div>
+						<!-- Six -->
+					<section id="ref">
+						<div class="container">
+							<h3>References</h3>
+							<p> </p>
+						</div>
+					</section>
+				</div>
 
 				<!-- Footer -->
 					<section id="footer">
