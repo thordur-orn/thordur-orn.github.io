@@ -132,7 +132,7 @@
 											In the weekly data, the distributions of car and bike traffic are very similar, with pretty uniform numbers in the weekdays, and significantly lower during the weekends.
 										</p>
 										<p>
-											The monthly pattern doesn't really offer any interesting insights, there is less traffic in July compared to the surrounding months. December is also less busy on the road.
+											The monthly pattern doesn't really offer any interesting insights, but there is less traffic in July compared to the surrounding months. December is also no too busy on the road.
 										</p>
 										<p>
 											Now we are interested in seeing the count of cars and bikes under certain weather conditions. Let us look at the numbers in hot weather, high windspeed and wet weather. We define hot weather as temperature over 16°C, high windspeed as windspeed over 40m/s, and wet weather as days with some rain. The interactive chart below shows a visualisation of those numbers. Note the difference in the y-axes.
@@ -145,7 +145,7 @@
 										<div class="text">
 											<h4>Difference between traffic in different weather conditions</h4>
 											<p>
-												We can now showcase the difference in car and bike count in high and low precipitation, windspeed and temperature. By splitting the data by precipitation or no precipitation, windspeed over 40m/s and under 40m/s and temperatures either side of 16°C, we can show the difference in the average count with a slope plot.
+												We can now showcase the difference in car and bike count in high and low precipitation, windspeed and temperature. By splitting the data by precipitation or no precipitation, windspeed over and under 40m/s and temperatures either side of 16°C, we can show the difference in the average count with a slope plot.
 											</p>
 											<div id="slope" class="image">
 												<img src="images/slope_chart.png" alt="Slope Chart" width="100%">
@@ -164,7 +164,7 @@
 									<article>
 										<div>
 											<h4>Predicting bike traffic and important features.</h4>
-											<p>Lastly we are interested in see if we can train a machine learning model that predicts the bike traffic for each station. First we choose the features we want as an input to our model, we want to make prediction based on location, month, day of the week and weather. The weather features we choose to use are temperature, what temperature it feels like, precipitation, wind speed and wind direction. To be able to make a good model we need to encode non-numerical features. That is day of week and the location of the station. For the weekdays Monday is represented as 0 and Sunday as 6. In table below be can see how the stations are encoded. </p>
+											<p>Lastly we are interested in seeing if we can train a machine learning model that predicts the bike traffic at each station. First we choose the features we want as an input to our model, we want to make prediction based on location, month, day of the week and weather. The weather features we choose to use are temperature, what temperature it feels like, precipitation, wind speed and wind direction. To be able to make a good model we need to encode non-numerical features. That is day of week and the location of the station. For the weekdays Monday is represented as 0 and Sunday as 6. In table below be can see how the stations are encoded. </p>
 										</div>
 										<h4>Encoding of the location</h4>
 										<div class="table-wrapper">
@@ -217,7 +217,7 @@
 										</div>
 										<div>
 											<p>
-												Next step is to find a model that fits out data and we see that it is a model based on decision trees. We can use a model like this to make predictions on bike traffic and also to give us more insights into what features are important when predicting bike traffic. In the figures below we can see the importance of features in our machine learning model. In the figure to the left we can see that the location or the name of the street the bikes are passing by is the far most important feature. In the figure to the right we can see the importance of other features. The second most important feature is the day of week. When looking at the weather feature feelslike is most important, from that we can interpret that depending on the tempature people feel has also some impact on if they decide to bike or not. 
+												The next step is to find a model that fits out data and we see that it is a model based on decision trees. We can use a model like this to make predictions on bike traffic and also to give us more insights into what features are important when predicting bike traffic. In the figures below we can see the importance of features in our machine learning model. In the figure to the left we can see that the location or the name of the street the bikes are passing by is the far most important feature. In the figure to the right we can see the importance of other features. The second most important feature is the day of week. When looking at the weather features, <it>feelslike</it> is most important, from that we can interpret that depending on the tempature people feel has also some impact on if they decide to bike or not. 
 											</p>
 											<div id="imp" class="image_">
 												<img src="images/feature_imp.png" alt="Feature importance" width="100%">
@@ -225,7 +225,7 @@
 										</div>	
 										<div>
 											<p>
-												We are interested in looking even further into feature importance and we decide to use shapley values. They are a widely used approach from cooperative game theory that come with desirable properties and are useful when looking deeper into the feature importance of a model.  The shaply values give a very similar result to the feature importance values and in the figure below we can see the mean absolute shaply values of each feature.
+												We are interested in looking even further into feature importance and we decide to use Shapley values. They are a widely used approach from cooperative game theory that come with desirable properties and are useful when looking deeper into the feature importance of a model.  The Shapley values give a very similar result to the feature importance values and in the figure below we can see the mean absolute Shapley values of each feature.
 											</p>
 											<div class="image_">
 												<img src="images/shaply_val.png" alt="">
@@ -233,7 +233,7 @@
 										</div>
 										<div>
 											<p>
-												Here below we have a different representation for the shaply values <a href="https://shap.readthedocs.io/en/latest/example_notebooks/overviews/An%20introduction%20to%20explainable%20AI%20with%20Shapley%20values.html#additive_regression" target="blank"></a>. This figure is more informative. We have different shaply values for different values of each feature. For example we can see that for higher percip we have lower shap value which means that high percip lowers the number of bikes passing by. Also for the feels like feature we can see that for higher values we have more traffic.
+												Here below we have a different representation for the Shapley values <a href="https://shap.readthedocs.io/en/latest/example_notebooks/overviews/An%20introduction%20to%20explainable%20AI%20with%20Shapley%20values.html#additive_regression" target="blank"></a>. This figure is more informative. We have different Shapley values for different values of each feature. For example we can see that for higher precip we have lower shap value which means that high percip lowers the number of bikes passing by. Also for the feels like feature we can see that for higher values we have more traffic.
 											</p>
 											<div class="image_">
 												<img src="images/summary_val.png" alt="">
@@ -242,7 +242,7 @@
 	
 										<div>
 											<p>
-												Lastly we want to visualize how a new datapoint is predicted.Since our model is a random forest regressor and based on decision trees. First we get a random sample for our data, below is the visualization of the branch that the datapoint goes through when predicting its output. The data point we want to predict is at Frederikssundsvej on a tuesday in August. Where the tempature feels like 17.5°C and perciption is 1.2. This decision tree predicts from thease features that the number of bikes that will pass by at this location on a day like this is 3052.
+												Lastly we want to visualize how a new datapoint is predicted.Since our model is a random forest regressor and based on decision trees. First we get a random sample for our data, below is the visualization of the branch that the datapoint goes through when predicting its output. The data point we want to predict is at Frederikssundsvej on a Tuesday in August. Where the tempature feels like 17.5°C and precipitation is 1.2. This decision tree predicts from these features that the number of bikes that will pass by at this location on a day like this is 3052.
 											</p>
 											<div class="image_">
 												<img src="images/grein.svg" alt="">
@@ -258,7 +258,7 @@
 								<div class="container">
 									<h3>Conclusion</h3>
 									<p> 
-										We were interested in showing just how much they like it, and if anything could stop them from using bikes for commuting. Having investigated the data, we managed to show that the weather does indeed affect their willingness to commute by bicycle. There are significantly fewer bikes on the cycle tracks if it is raining, the wind is high or the temperature is low. On the contrary, it seems like people do not let the weather affect their usage of cars, except for when it rains, when there are actually fewer cars on the street. One might think that lower windspeed and higher temperature would encourage people to keep the car at home, but our data shows that isn't the case. It looks like people just like staying at home when it rains instead of going to work or school. Or maybe they just use other modes of transport. To find the reason, we would have to dig deeper, gather more data and continue our analysis.
+										We were interested in showing just how much the people of Copenhagen like biking, and if anything could stop them from using bikes for commuting. Having investigated the data, we managed to show that the weather does indeed affect their willingness to commute by bicycle. There are significantly fewer bikes on the cycle tracks if it is raining, the wind is high or the temperature is low. On the contrary, it seems like people do not let the weather affect their usage of cars, except for when it rains, when there are actually fewer cars on the street. One might think that lower windspeed and higher temperature would encourage people to keep the car at home, but our data shows that isn't the case. It looks like people just like staying at home when it rains instead of going to work or school. Or maybe they just use other modes of transport. To find the reason, we would have to dig deeper, gather more data and continue our analysis.
 									</p>
 								</div>
 							</section>
